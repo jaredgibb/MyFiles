@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://thunkable.github.io/webviewer-extension/thunkableWebviewerExtension.js"
+        type="text/javascript"></script>
+</head>
+
+<body>
+    <span id="messageDisplay"></span>
+    <br />
+    <button type="button" id="messageButton">Click to send a message to the app</button>
+    <input type="text" id="myText" name="myText"><br>
+    <input type="text" id="other" name="myText"><br>
+    <input type="text" id="third" name="myText"><br>
+</body>
+<script type="text/javascript">
+
+    /* when the button is clicked, send a message to the app*/
+    document.getElementById('messageButton').onclick = function () {
+
+        //get values from input form
+        var message = document.getElementById('myText').value
+        var second = document.getElementById('other').value
+        var third = document.getElementById('third').value
+
+        /*create JSON object to neatly send data*/
+        var obj = {
+            "data1": message,
+            "data2": second,
+            "data3": third
+        };
+
+        /*send data to app*/
+        ThunkableWebviewerExtension.postMessage(obj);
+    }
+
+</script>
+
+</html>
